@@ -43,15 +43,24 @@ const onformSubmit = async function (event) {
   event.preventDefault();
   refs.gallery.innerHTML = '';
   page = 1;
-  querry = refs.input.value;
+  querry = refs.input.value.trim();
+  if (!refs.loadMoreBtn.classList.contains('hidden')) {
+    refs.loadMoreBtn.classList.toggle('hidden');
+  }
   const imagesList = await fetchImages(querry, page);
-  if (imagesList.length === 0) {
+  if (imagesList.length === 0 || querry === '') {
     Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
     return;
   }
   renderImages(imagesList);
+  if (imagesList.length < 40) {
+    Notiflix.Notify.warning(
+      "We're sorry, but you've reached the end of search results."
+    );
+    return;
+  }
   if (refs.loadMoreBtn.classList.contains('hidden')) {
     refs.loadMoreBtn.classList.toggle('hidden');
   }
