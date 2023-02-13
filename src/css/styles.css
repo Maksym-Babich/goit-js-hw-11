@@ -1,0 +1,41 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.gallery {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.photo-card {
+  flex-basis: calc((100% - 45px) / 4);
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
